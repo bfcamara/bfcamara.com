@@ -13,4 +13,4 @@ description: "Moving my blog from Tumblr to Gatsby"
 
 I finally had some time to move this blog from [Tumblr](https://tumblr.com) to [Gatsby](https://www.gatsbyjs.org).
 
-I will write in a next post describing the whole process of this migration. Stay tuned.
+I will write a next post describing the whole process of this migration. Stay tuned.
