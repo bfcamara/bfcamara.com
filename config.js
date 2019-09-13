@@ -1,14 +1,14 @@
 'use strict';
 
 module.exports = {
-  url: 'https://lumen.netlify.com',
+  url: 'https://bfcamara.netlify.com',
   pathPrefix: '/',
-  title: 'Blog by John Doe',
-  subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+  title: 'Blog by Bruno Câmara',
+  subtitle: 'Software Developer. Married and father of two lovely sons. Hapkido and Taekwondo student.',
   copyright: '© All rights reserved.',
-  disqusShortname: '',
-  postsPerPage: 4,
-  googleAnalyticsId: 'UA-73379983-2',
+  disqusShortname: 'bfcamara',
+  postsPerPage: 10,
+  googleAnalyticsId: 'UA-28590574-1',
   useKatex: false,
   menu: [
     {
@@ -18,26 +18,22 @@ module.exports = {
     {
       label: 'About me',
       path: '/pages/about'
-    },
-    {
-      label: 'Contact me',
-      path: '/pages/contacts'
     }
   ],
   author: {
-    name: 'John Doe',
+    name: 'Bruno Câmara',
     photo: '/photo.jpg',
-    bio: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+    bio: 'Software Developer. Married and father of two lovely sons. Hapkido and Taekwondo student.',
     contacts: {
-      email: '',
-      facebook: '#',
-      telegram: '#',
-      twitter: '#',
-      github: '#',
+      email: 'bruno.camara@gmail.com',
+      facebook: '',
+      telegram: '',
+      twitter: 'bfcamara',
+      github: 'bfcamara',
       rss: '',
       vkontakte: '',
-      linkedin: '#',
-      instagram: '#',
+      linkedin: 'bfcamara',
+      instagram: '',
       line: '',
       gitlab: '',
       weibo: ''

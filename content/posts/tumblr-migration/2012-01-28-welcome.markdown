@@ -1,0 +1,15 @@
+---
+layout: post
+template: post
+date: 2012-01-28
+title: "Welcome to my blog"
+slug: /post/16629534467/welcome
+description: "Welcome to my blog"
+---
+<div>&#13;
+<p>One of my resolutions for 2012 was back to blog . I decided to kill <a href="http://www.agilior.pt/blogs/bruno.camara/" target="_blank">my old blog</a> (in fact, it was already dead),  which is hosted in the <a href="http://www.agilior.pt/blogs/" target="_blank">Agilior's corporate blog</a>, the company where I work and I was a co-founder (right now, I already  haven't  any part of the company's capital) and create a new blog with a personal touch,associated with the bfcamara.com domain.</p>&#13;
+<p>The most of the content that I will publish is certainly related to my work, software development.</p>&#13;
+<p>As one of the founders of Agilior, I hope also to share some of the stories that were part of my life as founder, and some of the mistakes I made along this route. There will be space also to personal subjects, however with lower frequency.</p>&#13;
+<p>In <a href="http://www.agilior.pt/blogs/bruno.camara/archive/2007/12/02/3300.aspx">one of my posts</a> at the old blog, I explain that my life has been done of cycles. My perception is that a new cycle is about to come. I do not expect an easy time, and certainly I will have to leave the comfort zone. But "freedom" is one of the things that I value most, and to be honest,  I like to be the leader and the captain of the ship", deciding where to go and when.</p>&#13;
+<p><span>I hope I can maintain some activity in this blog.</span></p>&#13;
+</div> 

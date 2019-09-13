@@ -1,18 +1,11 @@
-// @flow strict
 import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Post from '../components/Post';
 import { useSiteMetadata } from '../hooks';
-import type { MarkdownRemark } from '../types';
+import Sidebar from '../components/Sidebar';
 
-type Props = {
-  data: {
-    markdownRemark: MarkdownRemark
-  }
-};
-
-const PostTemplate = ({ data }: Props) => {
+const PostTemplate = ({ data }) => {
   const { title: siteTitle, subtitle: siteSubtitle } = useSiteMetadata();
   const { frontmatter } = data.markdownRemark;
   const { title: postTitle, description: postDescription, socialImage } = frontmatter;

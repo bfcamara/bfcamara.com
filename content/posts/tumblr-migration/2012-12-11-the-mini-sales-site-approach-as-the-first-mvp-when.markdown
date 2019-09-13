@@ -1,0 +1,29 @@
+---
+layout: post
+template: post
+date: 2012-12-11
+tags:
+- startup
+- bootstrap
+title: "The Mini Sales Site approach as the first MVP when developing a SaaS application"
+slug: /post/37713680937/the-mini-sales-site-approach-as-the-first-mvp-when
+description: "The Mini Sales Site approach as the first MVP when developing a SaaS application"
+---
+<p><img align="right" alt="Start Small, Stay Small from Rob Walling" height="200" src="./ea3d3eabaa3bd4c65566a73d60f37b127a8c251d83d2da0cc865257d96036ffa.png" width="200" /></p>&#13;
+<p>A <a href="http://theleanstartup.com/principles" title="Lean Startup Principles: MVP" target="_blank">minimum viable product</a> (MVP) is a core concept of the<a href="http://theleanstartup.com/" title="The Lean Startup Movement" target="_blank"> Lean Startup</a> movement. The MVP is that version of the product that enables a team to test and validate the fundamental hypotheses (the leap-of-faith assumptions) and help entrepreneurs begin the learning process as quickly as possible, allowing a full turn of the<a href="http://theleanstartup.com/principles" title="Lean Startup Principles: Build-Measure-Learn" target="_blank"> Build-Measure-Learn</a> loop with a minimum amount of effort and the least amount of development time. But when the time arrives to get your your hands dirty, it remains the question: <strong>How minimum is the minimum in MVP?</strong> It's not an easy question to answer. </p>&#13;
+<p>We know that the MVP will  lack many features that may prove essential later on. And since <strong>we are trying to validate our hypotheses and measure the impact of the product</strong>, we will need to build something that we can measure from. And the first metric that we need to know is: <strong>do we have buyers for our product?</strong></p>&#13;
+<p>In my continuous learning process about startups and how to bootstrap,  I read the  book <a href="http://www.startupbook.net/" title="Start Small, Stay Small" target="_blank">"Start Small, Stay Small"</a> from <a href="http://www.softwarebyrob.com" title="Software By Rob" target="_blank">Rob Walling</a>, which I strongly recommend for those who pursuit the <a href="http://changethis.com/manifesto/80.03.MicropreneurManifesto/pdf/80.03.MicropreneurManifesto.pdf" title="Micropreneur Manifesto" target="_blank">Micropreneur</a> lifestyle.  In this book I learned a new approach, which seems to me to fit in the MVP concept boundaries: <strong>The Mini Sales Site</strong>. The main idea of this approach is to reduce uncertainty  about the conversion rate, and whether or not the prospect would buy our product.</p>&#13;
+<p>Asking to a potential customer "You will buy my product?" in a survey, or even building a Landing page asking for an email in case he is interested in the product, it's seems not enough and  provide us with inaccurate data.</p>&#13;
+<p>The Mini Sales Site is a stripped version of what will be the Sales Site. <strong>This approach will force us to think how to market our product, even before we start coding</strong>. A few years ago I thought that the most important think to get the path to success it was the quality of the product itself. Don't get me wrong: a product with quality it's important (although quality in the context of software development, among developers, it's usually associated how clean is the code, and how beautiful patterns were used in the solution, etc., which it's not a correct definition btw), but marketing is more important in my opinion. </p>&#13;
+<p>The Mini Sales Site consists of 2 or 3 pages:</p>&#13;
+<ul><li>Home</li>&#13;
+<li>Tour (optional)</li>&#13;
+<li>Pricing and Sign-up</li>&#13;
+</ul><p>The Home and Tour page will enumerate the benefits (better to enumerate the benefits rather the features) of using the product, screen shots and/or videos, the full product information, <strong>and most important a call to action to try the button 'Try Now' button</strong>. </p>&#13;
+<p>The Pricing and Sign-up page will contain the prices and the different editions availabe of the SaaS application, with call to action buttons "Try Now" or "Select Plan".</p>&#13;
+<p>Next we create an AdWords Campaign, configured with our keywords, and send the targeted traffic to our Mini Sales Site. </p>&#13;
+<p><strong>When someone clicks on "Try Now" or "Select Plan', we will notify the prospect that the product is under development yet and will be available soon, asking for the email address to notify him when the product will be available.</strong></p>&#13;
+<p>We should also have configured the AdWord conversions,  to know which keyword was converted and the  money spent on each conversion.</p>&#13;
+<p>Of course I have mixed feelings about this approach, since it seems that I am fooling my prospect. But in fact, the most people on the web are browsing, and if the user it's not interested in the product, he will bounce, leaving the mini sales immediately . If they are interested, maybe they don't mind to sign up for a launch notification.</p>&#13;
+<p><strong>At the end of the day, with this approach you can measure the searches performed with the keywords defined in AdWords, which keywords converted, and have a rough estimate of the conversion rate.</strong> We get this with a small investment, including the AdWord campaign, the development and design of the HTML pages of the mini sales site, and the screen-shots of the application if we have it. </p>&#13;
+<p><strong>In summary, I would like to say that the Mini Sales Site it seems to me a valid approach for those that who desire to build an MVP for SaaS applications, without much investment involved. It can be the first iteration of the Build-Measure-Learn loop, without compromising the next iterations.</strong></p> 
