@@ -1,3 +1,3 @@
-## Blof bfcamara.com
+## Bruno Câmara's Blog
 
 This blog uses Gatsby.
