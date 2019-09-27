@@ -1,6 +1,7 @@
 ---
 title: "About me"
 template: "page"
+socialImage: /photo.jpg
 ---
 
 My name is Bruno Câmara, I live in Seixal, Portugal, I'm married, and father of two sons. My nick is **bfcamara**, which is the name of this blog. Professionally, I am a software developer.
