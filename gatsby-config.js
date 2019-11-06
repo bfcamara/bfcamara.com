@@ -117,16 +117,16 @@ module.exports = {
             }
           },
           {
-            resolve: 'gatsby-remark-responsive-iframe',
-            options: { wrapperStyle: 'margin-bottom: 1.0725rem' }
-          },
-          {
-            resolve: "gatsby-remark-embed-youtube",
+            resolve: 'gatsby-remark-embed-youtube',
             options: {
               width: 800,
               height: 400
             }
-          },       
+          },
+          {
+            resolve: 'gatsby-remark-responsive-iframe',
+            options: { wrapperStyle: 'margin-bottom: 1.0725rem' }
+          },
           'gatsby-remark-autolink-headers',
           'gatsby-remark-prismjs',
           'gatsby-remark-copy-linked-files',
