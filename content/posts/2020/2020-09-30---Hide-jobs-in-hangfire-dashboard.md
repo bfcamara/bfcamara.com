@@ -5,10 +5,11 @@ template: "post"
 draft: false
 slug: "/posts/hide-succeeded-jobs-in-hangfire-dashboard/"
 category: "Development"
-socialImage: ./vs_hangfire_photo.jpg
+socialImage: /media/vs_hangfire_photo.jpg
 tags:
   - "hangfire"
-description: "This post shows how to remove some jobs in Hangfire Dashboard"
+    description: "This post shows how to exclude some jobs from the Succeeded
+    page in Hangfire Dashboard, even if they succeed."
 ---
 
 ![Hangfire](./vs_hangfire_photo.jpg)
