@@ -8,8 +8,7 @@ category: "Development"
 socialImage: /media/vs_hangfire_photo.jpg
 tags:
   - "hangfire"
-    description: "This post shows how to exclude some jobs from the Succeeded
-    page in Hangfire Dashboard, even if they succeed."
+description: "This post shows how to exclude some jobs from the Succeeded in Hangfire Dashboard, even if they succeed."
 ---
 
 ![Hangfire](./vs_hangfire_photo.jpg)
