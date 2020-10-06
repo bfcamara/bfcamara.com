@@ -5,7 +5,7 @@ template: "post"
 draft: false
 slug: "/posts/fear-of-public-speaking/"
 category: "Public Speaking"
-socialImage: /media/tal_like_ted.jpg
+socialImage: /media/talk_like_ted.jpg
 tags:
   - "public speaking"
 description: "This post is a reflection about the Fear of Public Speaking. 😨"

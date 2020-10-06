@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  url: 'https://bfcamara.netlify.com',
+  url: 'https://bfcamara.com',
   pathPrefix: '/',
   title: 'Blog by Bruno Câmara',
   subtitle: 'Software Developer. Married and father of two lovely sons. Hapkido and Taekwondo student.',
