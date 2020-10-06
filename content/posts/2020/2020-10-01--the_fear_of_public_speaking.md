@@ -24,7 +24,7 @@ faster, I start sweating**, etc. Typically these feelings have its peak few minu
 before the presentation. But then, a few minutes after the presentation starts,
 everything returns to a normal state, unless there are some issues with the
 presentation itself, like a laptop crash, or the projector is broken, or
-anything else that doesn't follow the plan, an in that case a lot of stress arises.
+anything else that doesn't follow the plan, and in that case a lot of stress arises.
 The root causes for these feelings might be: **fear to fail publicly, fear to
 be negativelly commented, fear to be vulnerable, fear to be judged, fear to not
 know the answer**, etc. Today, **if someone is on a stage, that person deserves my
