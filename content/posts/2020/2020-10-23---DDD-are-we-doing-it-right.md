@@ -45,11 +45,11 @@ I think it was around 2005 when I read the Eric Evan's **book ["Domain Driven De
 Complexity in the Heart of
 Software"](https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215),
 and I can say that it was very hard to digest it**. By that time, my
-feeling was that there were missing good samples to serve as reference
+feeling was that there were missing good samples to serve as base reference
 implementation. It started to appear then some samples in the community, but I never
 got 100% happy with a single one, where I could say _"That is the one"_. Even
 today, from time to time, I **still search for new DDD samples to see how they
-are tackling software complexity.
+are tackling software complexity**.
 
 Fortunately, we have more samples today that we can learn from, at least the
 tactical aspects of a DDD implementation. I say tactical, because regarding the
