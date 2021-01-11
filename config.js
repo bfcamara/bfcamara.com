@@ -4,7 +4,7 @@ module.exports = {
   url: 'https://bfcamara.com',
   pathPrefix: '/',
   title: 'Blog by Bruno Câmara',
-  subtitle: 'Software Developer. Married and father of two lovely sons. Hapkido and Taekwondo student.',
+  subtitle: 'Software Developer. Married and father of two sons. Hapkido and Taekwondo student.',
   copyright: '© All rights reserved.',
   disqusShortname: 'bfcamara',
   postsPerPage: 10,
@@ -23,7 +23,7 @@ module.exports = {
   author: {
     name: 'Bruno Câmara',
     photo: '/photo.jpg',
-    bio: 'Software Developer. Married and father of two lovely sons. Hapkido and Taekwondo student.',
+    bio: 'Software Developer. Married and father of two sons. Hapkido and Taekwondo student.',
     contacts: {
       email: 'bruno.camara@gmail.com',
       facebook: '',

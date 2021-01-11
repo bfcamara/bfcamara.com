@@ -12,9 +12,9 @@ I work as freelancer focused on Microsoft .Net stack. Since I worked at Microsof
 
 **The Recent Past…**
 
-I worked in 2016 at Microsoft as a Software Development Engineer in Visual Studio Team Services / Team Foundation Server team (Azure DevOps).
+I worked in 2016 at Microsoft as a Software Development Engineer II in Visual Studio Team Services / Team Foundation Server team (Azure DevOps).
 
-I worked from 2013 to 2015 as a Freelancer in Visual Studio Team Services / Team Foundation Server related projects.
+I worked from 2013 to 2015 as a Contractor in Visual Studio Team Services / Team Foundation Server related projects.
 
 Before that, I worked at Agilior, a company that I co-founded  in 2004. Agilior was a small consulting services company, and my work was to develop software with Microsoft technology stack.
 
@@ -26,7 +26,12 @@ After graduating in computer science in 1999, I started my career at a Portugues
 
 **And what else…**
 
-Well, I married when I was 25, in 2001, with my wife Filipa. We have two sons, André, born in 2004, and Filipe, who born in 2007. It has been a awesome journey, and being father it’s not easy. Prepare my sons for life is hard, and I am always questioning myself what is the best to prepare them. My “free” time is almost passed with my sons, playing with them, watching their football training sessions, etc.. When they are sleeping, I read books, follow blogs, and try new technologies.
+Well, I married when I was 25, in 2001, with my wife Filipa. We have two sons,
+André, born in 2004, and Filipe, who born in 2007. It has been a awesome
+journey, and being father it’s not easy. Prepare my sons for life is hard, and I
+am always questioning myself what is the best to prepare them. My “free” time is
+almost passed with my sons, playing with them, watching their football training
+sessions, etc. I also love to read books, follow blogs, and try new technologies.
 
 Finally, I am a Taekwondo and Hapkido student, which helps me to keep my body and
  mental health.
