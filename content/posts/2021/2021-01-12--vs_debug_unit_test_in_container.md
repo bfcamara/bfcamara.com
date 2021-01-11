@@ -4,7 +4,7 @@ date: "2021-01-11"
 template: "post"
 draft: false
 slug: "/posts/vs2019-debugging-unit-test-in-container/"
-category: "Development"
+category: "Software Development"
 socialImage: /media/vs_debug_unit_tests_in_linux_containers.png
 tags:
   - "VS 2019"
