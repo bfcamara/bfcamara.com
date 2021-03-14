@@ -79,4 +79,4 @@ some production code could have the same issue. **The `NoOptimization` could be
 only masquerading the real issue**. It seems that the JIT compiler is doing
 something different for the release build. I plan in my next post to explain what
 the test was doing, why it was failing in release, and how I have fixed it
-without the need of rely on compiler services options.
+without the need to rely on compiler services options.
