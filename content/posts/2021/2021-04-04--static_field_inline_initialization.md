@@ -60,7 +60,7 @@ public class UrlResolver : IUrlResolver {
 
 In the context of an ASP.NET Core application, this class is used inside
 controllers and it is being injected in its constructors as an
-`IModuleUrlResolver`. We are registering these services in the Startup class, and
+`IUrlResolver`. We are registering these services in the Startup class, and
 everything works as expected.
 
 ```csharp
