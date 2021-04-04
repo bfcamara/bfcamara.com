@@ -6,7 +6,7 @@ module.exports = {
   title: 'Blog by Bruno Câmara',
   subtitle: 'Software Engineer. Married and father of two sons. Hapkido and Taekwondo student.',
   copyright: '© All rights reserved.',
-  disqusShortname: 'bfcamara',
+  disqusShortname: '',
   postsPerPage: 10,
   googleAnalyticsId: 'UA-28590574-1',
   useKatex: false,
