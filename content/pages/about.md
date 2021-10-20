@@ -8,25 +8,29 @@ My name is Bruno Câmara, I live in Seixal, Portugal, I'm married, and father of
 
 ## The Present…
 
-I work as a backend software engineer at [OutSystems](https://outsystems.com)
+I am software engineer working as a Freelancer  on focused on the Microsoft .Net
+stack. I am also a part-time teacher in Polytechnic Institute of Setúbal,
+Portugal ([IPS](https://www.ips.p)), in College of Business Administration
+(ESCE), teaching classes related with software development.
+
+## The Recent Past…
+
+I worked in 2021 as a **backend software engineer at [OutSystems](https://outsystems.com)**
 focused on the Microsoft .Net stack. OutSystems is a low-code platform which
 provides the tools for companies to develop, deploy and manage omnichannel
 enterprise applications.
 
-
-## The Recent Past…
-
-I worked from 2016 to 2020 as a Contractor for
-[AppointMaster](https://appointmaster.com/) focused on backend with the
+I worked from 2016 to 2020 as a **Contractor for
+[AppointMaster](https://appointmaster.com/)** focused on backend with the
 Microsoft .Net stack, and DevOps with Azure DevOps.
-
-I worked in 2016 at Microsoft as a Software Development Engineer II in Visual Studio Team Services / Team Foundation Server team (Azure DevOps).
-
-I worked from 2013 to 2015 as a Contractor in Visual Studio Team Services / Team Foundation Server related projects.
 
 ## The Past…
 
-From 2009 to 2013, I worked at Agilior, a company that I co-founded in 2004.
+I worked in 2016 at **Microsoft as a Software Development Engineer II** in Visual Studio Team Services / Team Foundation Server team (Azure DevOps).
+
+I worked from 2013 to 2015 as a **Contractor in Visual Studio Team Services / Team Foundation Server** related projects.
+
+From 2009 to 2013, I worked at **Agilior**, a company that I co-founded in 2004.
 Agilior was a small consulting services company, and my work was to develop
 software with Microsoft technology stack.
 
