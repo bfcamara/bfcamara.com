@@ -8,9 +8,9 @@ My name is Bruno Câmara, I live in Seixal, Portugal, I'm married, and father of
 
 ## The Present…
 
-I am software engineer working as a Freelancer  on focused on the Microsoft .Net
+I am software engineer working as a Freelancer focused on the Microsoft .Net
 stack. I am also a part-time teacher in Polytechnic Institute of Setúbal,
-Portugal ([IPS](https://www.ips.p)), in College of Business Administration
+Portugal ([IPS](https://www.ips.pt)), in College of Business Administration
 (ESCE), teaching classes related with software development.
 
 ## The Recent Past…
