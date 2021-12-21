@@ -48,7 +48,7 @@ For demonstrating purposes, let's create the same test used when demonstrating h
   [Fact]
   public void Test_is_running_in_linux_container() {
 
-      Assert.True(RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+      Assert.True(RuntimeInformation.IsOSPlatform(OSPlatform.Linux));
 
   }
 ```
