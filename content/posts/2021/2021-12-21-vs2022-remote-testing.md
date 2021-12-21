@@ -76,9 +76,11 @@ list of test environments. Let's select the test environment just added,
 
 ![VS2022 - Select Test Environment](./vs2022-select-test-environment.png)
 
-**Note**: if you don't see the new environment, then close Visual Studio and launch it
-again. This is an experimental feature and I have experienced some issues while
-playing with this feature.
+**Note**: if you don't see the new environment, then close Visual Studio and
+launch it again. This is an experimental feature and I have experienced some
+issues while playing with it. We could also add environments connected to docker
+containers running locally on Docker Desktop, or even remote environments
+connected by SSH.
 
 Put a breakpoint in the test that you want to debug and select it in Test
 Explorer to start debugging it.
