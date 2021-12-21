@@ -20,16 +20,16 @@ description: |
 
 Several months ago I wrote a [blog post explaining how could we debug a unit
 test running in a Linux container using Visual Studio
-2019](./2021-01-12--vs_debug_unit_test_in_container.md). In that post I
-mentioned that the experience is from being great in VS2019. It was possible,
-but it required some manual steps.
+2019](./vs2019-debugging-unit-test-in-container/). In that post I mentioned that
+the experience is far from being great in VS2019. It was possible, but it
+required some manual steps.
 
 When we want to debug a unit test running in a Linux container, our
 **expectation is to have the same experience as when debugging locally**:
 
-  1. Go to Test Explorer
-  1. Right Click on the Test and select Debug
-  1. The debugger starts and stops in a breakpoint inside the test
+    1. Go to Test Explorer
+    1. Right Click on the Test and select Debug
+    1. The debugger starts and stops in a breakpoint inside the test
   
 That's exactly what **Visual Studio 2022 brought to us with [Remote
 Testing](https://docs.microsoft.com/en-us/visualstudio/test/remote-testing?view=vs-2022)**. Let's see how it works.
@@ -70,8 +70,9 @@ Now add a new file `testEnvironments.json` to the root of the solution
 
 Basically I am **adding a new test environment to run my tests in a WSL Ubuntu
 20.04 distribution**. To check the list of distributions you can run `wsl
---list` in a command prompt. In Test Explorer you have a dropdown with the list
-of test environments. Let's select the test environment just added, `WSL-Ubuntu`.
+--list` in a command prompt. In Test Explorer you now have a dropdown with the
+list of test environments. Let's select the test environment just added,
+`WSL-Ubuntu`.
 
 ![VS2022 - Select Test Environment](./vs2022-select-test-environment.png)
 
