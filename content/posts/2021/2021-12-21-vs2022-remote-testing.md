@@ -1,6 +1,6 @@
 ---
 title: Visual Studio 2022 - Remote Testing
-date: "2022-12-21"
+date: "2021-12-21"
 template: "post"
 draft: false
 slug: "/posts/vs2022-remote-testing/"
