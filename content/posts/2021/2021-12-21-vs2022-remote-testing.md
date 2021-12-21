@@ -27,9 +27,9 @@ required some manual steps.
 When we want to debug a unit test running in a Linux container, our
 **expectation is to have the same experience as when debugging locally**:
 
-    1. Go to Test Explorer
-    1. Right Click on the Test and select Debug
-    1. The debugger starts and stops in a breakpoint inside the test
+  1. Go to Test Explorer
+  1. Right Click on the Test and select Debug
+  1. The debugger starts and stops in a breakpoint inside the test
   
 That's exactly what **Visual Studio 2022 brought to us with [Remote
 Testing](https://docs.microsoft.com/en-us/visualstudio/test/remote-testing?view=vs-2022)**. Let's see how it works.
