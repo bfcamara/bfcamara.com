@@ -20,7 +20,7 @@ description: |
 
 Several months ago I wrote a [blog post explaining how could we debug a unit
 test running in a Linux container using Visual Studio
-2019](./vs2019-debugging-unit-test-in-container/). In that post I mentioned that
+2019](/posts/vs2019-debugging-unit-test-in-container/). In that post I mentioned that
 the experience is far from being great in VS2019. It was possible, but it
 required some manual steps.
 
