@@ -23,7 +23,7 @@ module.exports = {
   author: {
     name: 'Bruno Câmara',
     photo: '/photo.jpg',
-    bio: 'Software Developer. Married and father of two sons. Hapkido and Taekwondo student.',
+    bio: 'Software Engineer. Married and father of two sons. Obsessed to be a continuous learner.',
     contacts: {
       email: 'bruno.camara@gmail.com',
       facebook: '',

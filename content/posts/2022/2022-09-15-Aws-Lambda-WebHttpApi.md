@@ -65,7 +65,7 @@ etc (the code in `Execute initialization code` below).
 When an instance finishes to handle a HTTP request, **the instance is kept warm
 and ready to handle another HTTP request**. In subsequent HTTP requests, if a warm
 instance is available, only the `Execute handler code` is invoked.  If no HTTP
-request comes in for a while, the AWS Lamda service will eventually destroy the instance
+request comes in for a while, the AWS Lambda service will eventually destroy the instance
 after a while of inactivity.
 
 We can build something really quick to show this behavior. I am going to
@@ -115,7 +115,7 @@ installed the [AWS Toolkit for Visual Studio 2022](https://aws.amazon.com/visual
 1. **Test your endpoint in the browser**
 
     The stack that was created includes an API in AWS API Gateway. You can check
-    the URL in the Lamda page that will trigger the function.
+    the URL in the Lambda page that will trigger the function.
 
     ![API Gateway URL Trigger](./aws-Lambda-trigger-api-gateway-url.png)
 
@@ -158,13 +158,13 @@ installed the [AWS Toolkit for Visual Studio 2022](https://aws.amazon.com/visual
 
     ![AWS CloudWatch Logs](./aws-lambda-concurrent-logs.png)
 
-    The first request was served by a new execution environment, so we had a
-    cold start. A cold start is easy to identify in the logs by searching for a
-    `Init Duration` in the `REPORT` log.
+    The intial request (browser) was served by a new execution environment, so we
+    had a cold start. A cold start is easy to identify in the logs by searching
+    for a `Init Duration` in the `REPORT` log.
 
-    Next, when we launched 10 concurrent requests, the first request comming in,
-    reuses the execution environment that was created for the first request
-    completed in in browser (the instance was kept warm). **For the remaining 9
+    Next, when we launched 10 concurrent requests, the first request comming in
+    reuses the execution environment that was created for the initial request
+    completed in the browser (the instance was kept warm). **For the remaining 9
     requests the AWS Lambda service has created new 9 execution environments,
     hence 9 cold starts**.
 
@@ -181,15 +181,15 @@ To minimize the impact of cold start we can:
 - **Reduce the number of cold starts**
 - **Reduce the time of a cold start**
 
-To **minimize the number of cold starts** we can use [**Provisioned
+To **reduce the number of cold starts** we can use [**Provisioned
 Concurrency**](https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html).
 Provisioned concurrency initializes a requested number of execution environments
 so that they are **prepared to respond immediately to your function's invocations**.
-Be aware that configuring provisioned concurrency incurs charges to your AWS
-account.
+Be aware that configuring provisioned concurrency **incurs charges to your AWS
+account**.
 
 To **minimize the time spent in a cold start** there are some things we can do:
-- keep your package small
+- keep our package small
 - minimize library dependencies
 - adjust memory function (you can use [AWS Lambda Power
   Tuning](https://docs.aws.amazon.com/lambda/latest/operatorguide/profile-functions.html))
@@ -198,9 +198,9 @@ To **minimize the time spent in a cold start** there are some things we can do:
 ## Can your HTTP API live with Cold Starts?
  
 It really depends. First, we need to **measure the cost of a cold start in terms
-of latency**. For example, the logs above are showing a cold start of aprox.
-500ms (for a very simple scenario), and this varies based on programming
-language, runtime, etc.  
+of latency**. For example, the logs above are showing thar a cold start takes
+aprox. 500ms (for a very simple scenario). A cold start duration varies based on
+programming language, runtime, etc.  
 
 Second, we need to **understand how our API is being used by consumers, who are
 these consumers, and what are the patterns of usage during the day, day of week,
@@ -208,13 +208,13 @@ etc**. Based on that knowledge we can have an idea what is the impact of a cold
 start in the flow in which we are using our function.
 
 If we anticipate problems caused by cold starts, **we should analyze what is the
-cost of configuring provisioned concurrency**. Furthermore, **consider using
-[Provisioned Concurrency with Application Auto
+cost (money) of configuring provisioned concurrency**. Furthermore, **consider
+using [Provisioned Concurrency with Application Auto
 Scaling](https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html#managing-provisioned-concurency)**
 to adjust the number of provisioned instances based on usage. **Nevertheless, we
 need to be aware that we will be charged by using provisioned concurrency**.
 
-## Serverless alternatives to AWS Lambda
+## AWS Serverless alternatives to AWS Lambda
 
 If we are not confortable with the concurrency execution model provided by AWS
 Lambda, we can always use some alternatives in AWS:
@@ -235,28 +235,23 @@ Lambda, we can always use some alternatives in AWS:
 
 ## Conclusion
 
-**AWS Lambda is my first option in AWS when going serverless** when analyzing a
-specific scenario. It's **really simple to use**, **integrates seamlessly with a
-lot of AWS Services** (SQS, S3, SNS, CloudWatch, API Gateway, etc.), and
-provides a lot of great features specially when it comes to scalability:
-**scale-up or scale-down** (scale to zero).
+When analyzing a specific scenario, **AWS Lambda is typical the option that I
+consider first in AWS when going serverless** . It's **really simple to use**,
+**integrates seamlessly with a lot of AWS Services** (SQS, S3, SNS, CloudWatch,
+API Gateway, etc.), and provides a lot of great features specially when it comes
+to scalability: **scale-up or scale-down** (scale to zero).
 
-If it scales to zero, then **we need to be aware of cold starts**, particularly
-in case of synchronous APIs, where it can cause some impact in terms of latency.
-If the scenario being analyzed cannot live with cold starts, **I would consider
-using AWS App Runner** which has a very interesting [pricing
-model](https://aws.amazon.com/apprunner/pricing/).
+If we want a scales to zero approach, then **we need to be aware of cold
+starts**, particularly in case of synchronous APIs, where it can cause some
+impact in terms of latency. If the scenario being analyzed cannot live with cold
+starts, **I would consider using AWS App Runner** which has a very interesting
+[pricing model](https://aws.amazon.com/apprunner/pricing/).
 
 Regarding **Kubernetes** (AWS EKS), I think it makes totally sense when it's an
 initiative enterprise wide. The learning curve is not negligenciable (even when
-we don't need to install and administer the cluster like in EKS), and typically
-we need to spend some time configuring the cluster until we have all the knobs
-needed. For example, if we want to have auto-scale based on events we might need
-have [KEDA](https://keda.sh/) installed. In fact, Microsoft provides a service
-called [Azure Container
-Apps](https://docs.microsoft.com/en-us/azure/container-apps/overview) in which
-KEDA is already installed, which is a really smart idea.
-
-
-
-
+we don't need to install and administer the cluster like in AWS EKS), and
+typically we need to spend some time configuring the cluster until we have all
+the knobs needed. For example, if we want to have auto-scale based on events we
+might need to have [KEDA](https://keda.sh/) intalled (that's exactly what
+Microsoft did with [Azure Container
+Apps](https://docs.microsoft.com/en-us/azure/container-apps/overview)).
