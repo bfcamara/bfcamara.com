@@ -55,6 +55,3 @@ journey, and being father it’s not easy. Prepare my sons for life is hard, and
 am always questioning myself what is the best to prepare them. My “free” time is
 almost passed with my sons, playing with them, watching their football training
 sessions, etc. I also love to read books, follow blogs, and try new technologies.
-
-Finally, I am a Taekwondo and Hapkido student, which helps me to keep my body and
- mental health.

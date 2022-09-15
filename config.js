@@ -4,7 +4,7 @@ module.exports = {
   url: 'https://bfcamara.com',
   pathPrefix: '/',
   title: 'Blog by Bruno Câmara',
-  subtitle: 'Software Engineer. Married and father of two sons. Hapkido and Taekwondo student.',
+  subtitle: 'Software Engineer. Married and father of two sons. Continuous learner.',
   copyright: '© All rights reserved.',
   disqusShortname: '',
   postsPerPage: 10,
