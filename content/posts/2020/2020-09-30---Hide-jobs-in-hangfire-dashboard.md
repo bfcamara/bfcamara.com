@@ -61,7 +61,7 @@ So, **to be 100% sure that I would be notified if the system stopped completely,
 I decided to run a Heartbeat job every 5 minutes, which basically sends a custom
 event to App Insights**.
 
-![Hangfire Recurring Jobs](hangfire_recurring_heartbeat.png)
+![Hangfire Recurring Jobs](./hangfire_recurring_heartbeat.png)
 
 And here is the simple code of the job.
 
@@ -83,7 +83,7 @@ So, everything was in place to address my main fear, right? Yes, but I got a
 collateral effect. **Suddenly I got a lot of noise in the Dashboard - every
 "Heartbeat" jobs was being registered in the "Succeeded" page**. 
 
-![Hangfire Heartbeat Noise](hangfire_dashboard_heartbeat_noise.png)
+![Hangfire Heartbeat Noise](./hangfire_dashboard_heartbeat_noise.png)
 
 But I didn't want to pollute the "Succeeded" page with these Heartbeat job
 entries, and I only care of those jobs related with the data sync. So, I needed
@@ -134,14 +134,14 @@ public Task Heartbeat() {
 And here is the result - **Succeeded jobs with only the jobs that I am
 interested in**.
 
-![Hangfire Succeeded Jobs](hangfire_succeeded_job_clean.png)
+![Hangfire Succeeded Jobs](./hangfire_succeeded_job_clean.png)
 
 And the Deleted jobs with the noise of Heartbeats jobs.
 
-![Hangfire Deleted Jobs](Hangfire_Dashboar_Delete_Heartbeat_Jobs.png)
+![Hangfire Deleted Jobs](./Hangfire_Dashboar_Delete_Heartbeat_Jobs.png)
 
 And here is the detail with the reason why it was deleted.
 
-![Hangfire Deleted Heartbeat Detail](Hangfire_deleted_heartbeat_detail.png)
+![Hangfire Deleted Heartbeat Detail](./Hangfire_deleted_heartbeat_detail.png)
 
 I hope it helps if you have an identical scenario in Hangfire.
