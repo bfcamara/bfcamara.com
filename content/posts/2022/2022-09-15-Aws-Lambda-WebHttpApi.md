@@ -131,7 +131,7 @@ installed the [AWS Toolkit for Visual Studio 2022](https://aws.amazon.com/visual
     a bash or a windows subsystem for linux (wsl) and run the following command
 
     ```bash
-    seq 10 | xarg -I{} -P 10 curl <url_api_gateway>
+    seq 10 | xargs -I{} -P 10 curl <url_api_gateway>
     ``` 
 
     The requests are launched concurrently, wait aprox. 5 seconds, and you will
@@ -198,14 +198,14 @@ To **minimize the time spent in a cold start** there are some things we can do:
 ## Can your HTTP API live with Cold Starts?
  
 It really depends. First, we need to **measure the cost of a cold start in terms
-of latency**. For example, the logs above are showing thar a cold start takes
+of latency**. For example, the logs above are showing that a cold start takes
 aprox. 500ms (for a very simple scenario). A cold start duration varies based on
 programming language, runtime, etc.  
 
 Second, we need to **understand how our API is being used by consumers, who are
 these consumers, and what are the patterns of usage during the day, day of week,
-etc**. Based on that knowledge we can have an idea what is the impact of a cold
-start in the flow in which we are using our function.
+etc**. Based on that knowledge we can have an idea of what is the impact of a
+cold start in the flow in which we are using our function.
 
 If we anticipate problems caused by cold starts, **we should analyze what is the
 cost (money) of configuring provisioned concurrency**. Furthermore, **consider
@@ -241,7 +241,7 @@ consider first in AWS when going serverless** . It's **really simple to use**,
 API Gateway, etc.), and provides a lot of great features specially when it comes
 to scalability: **scale-up or scale-down** (scale to zero).
 
-If we want a scales to zero approach, then **we need to be aware of cold
+If we want a _"scale to zero"_ approach, then **we need to be aware of cold
 starts**, particularly in case of synchronous APIs, where it can cause some
 impact in terms of latency. If the scenario being analyzed cannot live with cold
 starts, **I would consider using AWS App Runner** which has a very interesting
@@ -255,3 +255,6 @@ the knobs needed. For example, if we want to have auto-scale based on events we
 might need to have [KEDA](https://keda.sh/) intalled (that's exactly what
 Microsoft did with [Azure Container
 Apps](https://docs.microsoft.com/en-us/azure/container-apps/overview)).
+
+See you next time. I will continue to explore other scenarios like gRPC and
+WebSockets.
