@@ -252,7 +252,7 @@ initiative enterprise wide. The learning curve is not negligenciable (even when
 we don't need to install and administer the cluster like in AWS EKS), and
 typically we need to spend some time configuring the cluster until we have all
 the knobs needed. For example, if we want to have auto-scale based on events we
-might need to have [KEDA](https://keda.sh/) intalled (that's exactly what
+might need to have [KEDA](https://keda.sh/) installed (that's exactly what
 Microsoft did with [Azure Container
 Apps](https://docs.microsoft.com/en-us/azure/container-apps/overview)).
 
