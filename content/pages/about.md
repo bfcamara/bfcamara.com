@@ -4,12 +4,16 @@ template: "page"
 socialImage: /photo.jpg
 ---
 
-My name is Bruno Câmara, I live in Seixal, Portugal, I'm married, and father of two sons. My nick is **bfcamara**, which is the name of this blog. Professionally, I am a software engineer.
+![Me in Dubai - Burj Khalifa](./bruno_dubai.png)
+
+My name is Bruno Câmara, I live in Seixal, Portugal, I'm married, and father of
+two sons. My nick is **bfcamara**, which is the name of this blog.
+Professionally, I am a software engineer.
 
 ## The Present…
 
 I am software engineer working as a Freelancer focused on the Microsoft .Net
-stack. I am also a part-time teacher in Polytechnic Institute of Setúbal,
+stack, Cloud solutions, and DevOps. I am also a part-time teacher in Polytechnic Institute of Setúbal,
 Portugal ([IPS](https://www.ips.pt)), in College of Business Administration
 (ESCE), teaching classes related with software development.
 
@@ -53,5 +57,6 @@ Well, I married when I was 25, in 2001, with my wife Filipa. We have two sons,
 André, born in 2004, and Filipe, who born in 2007. It has been a awesome
 journey, and being father it’s not easy. Prepare my sons for life is hard, and I
 am always questioning myself what is the best to prepare them. My “free” time is
-almost passed with my sons, playing with them, watching their football training
-sessions, etc. I also love to read books, follow blogs, and try new technologies.
+almost spent with my sons, watching their football training sessions and
+matches, etc. I also spend a considerable time reading books and blogs, and
+trying new technologies.
