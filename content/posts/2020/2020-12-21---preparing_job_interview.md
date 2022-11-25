@@ -5,7 +5,7 @@ template: "post"
 draft: false
 slug: "/posts/preparing-interviews-for-software-engineer-position/"
 category: "Job Interview"
-socialImage: /media/preparing-interviews-for-software-engineer-position.jpg
+socialImage: "preparing-interviews-for-software-engineer-position.jpg"
 tags:
   - "Job Interview"
   - "Software Development"
@@ -177,7 +177,7 @@ Another common set of questions is **questions about past projects that are
 mentioned in your CV**. My suggestion is to revisit your CV and try to remember
 some options you have chosen, the design and architecture adopted, etc. If some
 detail is missing in your head, go read some documentation that you still have
-about the project. 
+about the project.
 
 Typically, **the projects that are discussed in interviews are chosen by you**,
 not by the interviewer. So, be wise when choosing your projects to be discussed.

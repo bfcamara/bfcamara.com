@@ -5,7 +5,7 @@ template: "post"
 draft: false
 slug: "/posts/ddd-is-fancy-are-we-doing-it-right/"
 category: "Software Development"
-socialImage: /media/DDD_Praise_from_Eric_Evans_Book.jpg
+socialImage: DDD_Praise_from_Eric_Evans_Book.jpg
 tags:
   - "DDD"
   - "Software Development"
