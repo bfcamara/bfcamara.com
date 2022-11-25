@@ -5,7 +5,7 @@ template: "post"
 draft: false
 slug: "/posts/hide-succeeded-jobs-in-hangfire-dashboard/"
 category: "Development"
-socialImage: /media/vs_hangfire_photo.jpg
+socialImage: vs_hangfire_photo.jpg
 tags:
   - "hangfire"
 description: "This post shows how to exclude some jobs from the Succeeded in Hangfire Dashboard, even if they succeed."
@@ -81,7 +81,7 @@ running.
 
 So, everything was in place to address my main fear, right? Yes, but I got a
 collateral effect. **Suddenly I got a lot of noise in the Dashboard - every
-"Heartbeat" jobs was being registered in the "Succeeded" page**. 
+"Heartbeat" jobs was being registered in the "Succeeded" page**.
 
 ![Hangfire Heartbeat Noise](./hangfire_dashboard_heartbeat_noise.png)
 

@@ -1,0 +1,43 @@
+{
+  "title": "Blog by Bruno Câmara",
+  "url": "https://bfcamara.com",
+  "subtitle": "Cloud Solutions and Software Engineer. Married and father of two sons. Continuous learner.",
+  "copyright": "© All rights reserved.",
+  "googleAnalyticsId": "UA-28590574-",
+  "disqusShortname": "",
+  "postsLimit": 10,
+  "pathPrefix": "/",
+  "menu": [
+    {
+      "label": "Articles",
+      "path": "/"
+    },
+    {
+      "label": "About me",
+      "path": "/pages/about"
+    }
+  ],
+  "author": {
+    "name": "Bruno Câmara",
+    "photo": "/photo.jpg",
+    "bio": "Cloud Solutions and Software Engineer. Married and father of two sons. Obsessed to be a continuous learner.",
+    "contacts": {
+      "rss": "",
+      "email": "bruno.camara@gmail.com",
+      "github": "bfcamara",
+      "facebook": "",
+      "telegram": "",
+      "twitter": "bfcamara",
+      "linkedin": "bfcamara",
+      "instagram": "",
+      "mastodon": "",
+      "line": "",
+      "weibo": "",
+      "gitlab": "",
+      "medium": "",
+      "youtube": "",
+      "codepen": "",
+      "soundcloud": ""
+    }
+  }
+}
