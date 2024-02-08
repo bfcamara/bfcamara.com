@@ -12,12 +12,18 @@ Professionally, I am a software engineer.
 
 ## The Present…
 
-I am software engineer working as a Freelancer focused on the Microsoft .Net
-stack, Cloud solutions, and DevOps. I am also a part-time teacher in Polytechnic Institute of Setúbal,
+I am software engineer and cloud solutions architect, working as a Freelancer focused on the Microsoft .Net
+stack, Amazon Web Services (AWS), and Azure DevOps. I am also a part-time teacher in Polytechnic Institute of Setúbal,
 Portugal ([IPS](https://www.ips.pt)), in College of Business Administration
 (ESCE), teaching classes related with software development.
 
 ## The Recent Past…
+
+I worked from 2021 to 2024 as a **Cloud Solutions Architect at [Covetrus](https://covetrus.com)** focused
+on AWS. My main role was to migrate Rapport (Communications and Online Scheduling service) .NET workloads running in EC2 instances to a more cloud native approach
+using services such as AWS Lambda, ECS, API Gateway, SNS, SQS, etc.
+
+## The Past…
 
 I worked in 2021 as a **backend software engineer at [OutSystems](https://outsystems.com)**
 focused on the Microsoft .Net stack. OutSystems is a low-code platform which
@@ -27,8 +33,6 @@ enterprise applications.
 I worked from 2016 to 2020 as a **Contractor for
 [AppointMaster](https://appointmaster.com/)** focused on backend with the
 Microsoft .Net stack, and DevOps with Azure DevOps.
-
-## The Past…
 
 I worked in 2016 at **Microsoft as a Software Development Engineer II** in Visual Studio Team Services / Team Foundation Server team (Azure DevOps).
 
@@ -55,8 +59,8 @@ as COM, Sql Server, XSLT, IIS, Javascript, etc.
 
 Well, I married when I was 25, in 2001, with my wife Filipa. We have two sons,
 André, born in 2004, and Filipe, who born in 2007. It has been a awesome
-journey, and being father it’s not easy. Prepare my sons for life is hard, and I
-am always questioning myself what is the best to prepare them. My “free” time is
+journey. Preparing my sons for life is not an easy task, and I
+am always questioning myself what is the best way to prepare them. My “free” time is
 almost spent with my sons, watching their football training sessions and
 matches, etc. I also spend a considerable time reading books and blogs, and
 trying new technologies.
