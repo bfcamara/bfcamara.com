@@ -373,7 +373,7 @@ dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 
 And now let's check the differences to protect our endpoint.
 
-```csharp{1-2,6,7-21}{numberLines: true}
+```csharp{numberLines: true}
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 
