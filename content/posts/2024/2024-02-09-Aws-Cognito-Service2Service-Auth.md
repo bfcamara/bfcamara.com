@@ -15,9 +15,6 @@ tags:
 description: |
   In this blog post I will show how AWS Cognito can be used for Service to Service Authorization in ASP.NET Core.
 ---
-<!---
-![AWS Lambda - HTTP Concurrent Requests](./Amazon_Lambda-Http-Api.png)
---->
 In a Microservices architecture, the number of services grows organically and
 some services need to talk to other services. Ideally the inter-services
 communication should be asynchronous following a publish-subscribe pattern, but
@@ -36,7 +33,7 @@ interaction in these services, for example having a windows service that
 collects some data from on-premise installations and send it to a service that
 lives in the cloud.
 
-## OAuth 2.0 - Client Credentials Grant flow
+## OAuth 2.0 - Client Credentials Grant flow ##
 
 There are several solutions to implement **Service-to-Service authorization**,
 known also as Machine to Machine (M2M) authorization, such as API keys, Mutual
@@ -60,24 +57,24 @@ Cognito**.
 To setup Amazon Cognito for our scenario we need the following resources:
 
 1. **User Pool** - even though we won't have real users in this pool, a User Pool is the materialization of an Authorization Server in OAuth language
-1. **Cognito domain** - expose the authorization server Oauth endpoints in a domain
+1. **Cognito domain** - expose the authorization server OAuth endpoints in a domain
 1. **Resource Server** - it represents MyService. We will have as many resource
    servers as the number of services.
-1. **Client** - it represents the Backend-for-frontend MyBff, We will have as
+1. **Client** - it represents the Backend-for-Frontend MyBff. We will have as
    many clients as the number of services that are calling other services.
 
 I'm going to use CloudFormation to create all these resources instead of AWS console because:
 
 - I love CloudFormation - I don't care if I'm locked in to AWS. The truth is
   that CloudFormation is so simple and so powerful that I discard any other IaC
-  alternative (for example Terraform), when managing resources inside AWS
+  alternative (for example Terraform) when managing resources inside AWS
 - Amazon Cognito in console is not very intuitive. In fact I think that's one of
   the disadvantages of Amazon Cognito, when comparing with other solutions like
-  Auth0 (considered by many  the best solutions in the marked in this field). I think
-  Amazon Cognito still needs to be polished to remove some friction from
+  Auth0 (considered by many  the best solution in the market in this field). I think
+  Amazon Cognito still needs to be polished to remove some friction when used by
   developers and cloud architects.
 
-### Creating a User Pool
+### Creating a User Pool ###
 
 ```yaml
   # Create a user pool
@@ -115,7 +112,7 @@ In the **Sign-up experience** tab
 ![AWS Cognito - User Pool Signup experience](aws-cognito-user-pool-signup.png)
 
 
-### Cognito domain
+### Cognito domain ###
 
 ```yaml
   # Creates a domain with oauth endpoints
@@ -133,7 +130,7 @@ https://replace-your-domain-here.auth.us-east-1.amazoncognito.com
 
 We could have used a custom domain insteas of a Amazon Cognito domain.
 
-### Creating a Resource Server for MyService
+### Creating a Resource Server for MyService ###
 
 ```yaml
   # Resource Server for MyService
@@ -155,7 +152,7 @@ In the **App Integration** tab
 
 ![AWS Cognito Resource Server](aws-cognito-resource-server.png)
 
-### Create a client for MyBFF
+### Create a client for MyBFF ###
 
 ```yaml
   # Client for MyBFF
@@ -184,7 +181,9 @@ In the AWS console, in the App Integration tab
 
 ![AWS Cognito Clients](aws-cognito-client.png)
 
-![](aws-cognito-client-detail.png)
+![AWS Cognito Client Detail](aws-cognito-client-detail.png)
+
+![AWS Cognito Client Detail Hosted UI](aws-cognito-client-detail-hosted-uipng.png)
 
 ### CloudFormation Template for Client Credentials Grant flow
 
@@ -282,7 +281,7 @@ Things to notice:
 - The `scope` claim has the list of scopes of this access token, which in this
   case includes the scope `MyService/weather_read`,
 
-## MyService Setup
+## MyService Setup ##
 
 Now it's time the build the service MyService using ASP.NET Core. I will use Minimal APIs in ASP.NET Core 8.
 
@@ -374,7 +373,7 @@ dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 
 And now let's check the differences to protect our endpoint.
 
-```csharp{1-2,6-21,41}{numberLines:true}
+```csharp{1-2,6-21,41}{numberLines: true}
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 
@@ -448,7 +447,7 @@ These are the changes:
 
 In the appsettings.json we need to register the metadata address
 
-```json{12}{numberLines:true}
+```json{12}{numberLines: true}
 {
   "Logging": {
     "LogLevel": {
@@ -470,4 +469,4 @@ In the appsettings.json we need to register the metadata address
 
 
 
-## MyBFF Setup
+## MyBFF Setup ##
