@@ -2,7 +2,7 @@
 title: Using AWS Cognito for Service-to-Service Authorization in ASP.NET Core
 date: "2024-02-09"
 template: "post"
-draft: true
+draft: false
 slug: "/posts/aws-cognito-service2service-auth/"
 category: "Cloud"
 #socialImage: Amazon_Lambda-Http-Api.png
@@ -437,5 +437,37 @@ record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }
 ```
+
+These are the changes:
+
+- Lines 1-2: Just adding some usings
+- Lines 6: Registering the Authentication middleware. It requires registering
+  the .well-known url configuration for our user pool
+- Lines 7-21; Registering the Authorization middleware, with the policy
+  `WeatherReadPolicy` to check for the scope `MyService/weather_read`
+
+In the appsettings.json we need to register the metadata address
+
+```json{12}{numberLines:true}
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "Authentication": {
+    "Schemes": {
+      "Bearer": {
+        "MetadataAddress": "https://cognito-idp.us-east-1.amazonaws.com/<your-cognito-user-pool-id>/.well-known/openid-configuration"
+      }
+    }
+  }
+}
+
+```
+
+
 
 ## MyBFF Setup
