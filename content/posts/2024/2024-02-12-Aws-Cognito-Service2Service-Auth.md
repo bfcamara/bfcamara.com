@@ -1,11 +1,11 @@
 ---
 title: Using AWS Cognito for Service-to-Service Authorization in ASP.NET Core
-date: "2024-02-09"
+date: "2024-02-12"
 template: "post"
 draft: false
 slug: "/posts/aws-cognito-service2service-auth/"
 category: "Cloud"
-#socialImage: Amazon_Lambda-Http-Api.png
+socialImage: oauth-client-credentials.png
 tags:
   - "Serverless"
   - "AWS"
@@ -16,19 +16,21 @@ description: |
   In this blog post I will show how AWS Cognito can be used for Service to Service Authorization in ASP.NET Core.
 ---
 In a Microservices architecture, we typically observe the number of services
-increasing as a result of an organically growth, and some services start talking
+increasing as a result of an organic growth, and some services start talking
 with other services. Ideally the inter-services communication should be
 asynchronous following a publish-subscribe pattern, but in practice we have some
 services that need to follow a request-reply pattern.
 
-This is typically the case when we have **Backends-for-Frontends (BFF) acting as
-separate API gateways for each front-end client. These BFFs need to talk to
-other services**, typically issuing queries to fetch data, or commands to
-perform business actions being handled by the downstream service. Most of the
-time these interactions are made through REST APIs, and **we need to have a way to
-authorize these requests, even if all these services are running within the
-internal network perimeter** with restrictions from the outside world (Zero
-Trust).
+This is typically the case when we have **[Backends-for-Frontends
+(BFF)](https://samnewman.io/patterns/architectural/bff/) acting as separate API
+gateways for each front-end client. These BFFs need to talk to other services**,
+typically issuing queries to fetch data, or commands to perform business actions
+being handled by the downstream service. **Most of the time these interactions
+are made through REST APIs**, and **we need to have a way to authorize these
+requests, even if all these services are running within the internal network
+perimeter** with restrictions from the outside world, **following a [Zero
+Trust](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/)
+strategy**.
 
 Besides BFFs, another scenario where we need to authorize a service is when we
 have **external services running on-premise, outside of the cloud, and there's no
@@ -36,13 +38,15 @@ human interaction in these services, for example having a windows service that
 collects some data from on-premise installations and send it to a service that
 lives in the cloud**.
 
-## OAuth 2.0 - Client Credentials Grant flow ##
+## OAuth 2.0 - Client Credentials Grant flow 🔒 ##
 
 There are several solutions to implement **Service-to-Service authorization**,
-known also as **Machine to Machine (M2M) authorization**, such as API keys, Mutual
-TLS, OAuth, etc. In this post I want to explore using **OAuth 2.0 with the
-Client Credentials Grant flow** in the context of **ASP.NET Core** and **Amazon
-Cognito**.
+known also as **Machine to Machine (M2M) authorization**, such as API keys,
+Mutual TLS, OAuth, etc. In this post I want to explore using **[OAuth
+2.0](https://oauth.net/2/) with the [Client Credentials Grant
+flow](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4)** in the
+context of **ASP.NET Core** and **[Amazon
+Cognito](https://aws.amazon.com/cognito/)**.
 
 ![OAuth2 - Client Credentials flow](oauth-client-credentials.png)
 
@@ -57,7 +61,7 @@ The **OAuth 2.0 Client Credentials Grant flow explained**:
   token in the `Authorization` header
 1. MyService validates the request and returns the data if the Bearer token is valid.
 
-## Amazon Cognito Setup ##
+## Amazon Cognito Setup ☁️ ##
 
 To setup Amazon Cognito for our scenario we need the following resources:
 
@@ -305,7 +309,7 @@ issued by AWS Cognito:
 - The `scope` claim has the list of scopes of this access token, which in this
   case includes the scope `MyService/weather_read`,
 
-## MyService Setup (Resource Server) ##
+## `MyService` Setup (Resource Server) : ##
 
 Now it's time to build the service `MyService` using ASP.NET Core. I will use Minimal APIs in ASP.NET Core 8.
 
@@ -344,9 +348,9 @@ curl -X 'GET' 'https://localhost:7062/weatherforecast'
 [{"date":"2024-02-10","temperatureC":50,"summary":"Balmy","temperatureF":121},{"date":"2024-02-11","temperatureC":48,"summary":"Chilly","temperatureF":118},{"date":"2024-02-12","temperatureC":23,"summary":"Mild","temperatureF":73},{"date":"2024-02-13","temperatureC":50,"summary":"Warm","temperatureF":121},{"date":"2024-02-14","temperatureC":-4,"summary":"Chilly","temperatureF":25}]
 ```
 
-Now **we want to protect MyService in order to only authorize clients** with access tokens issued by the AWS Cognito User pool we have created previously.
+Now **we want to protect `MyService` in order to only authorized clients** with access tokens issued by the AWS Cognito User pool we have created previously.
 
-Let' check the initial Program.cs (just removing comments from the initial
+Let' check the initial `Program.cs` (just removing comments from the initial
 template)
 
 ```csharp
@@ -500,6 +504,9 @@ Let's call again the endpoint without any authorization, and we should expect an
 
 ```bash
 curl -X 'GET' 'https://localhost:7062/weatherforecast' -i
+```
+
+```bash
 HTTP/1.1 401 Unauthorized
 Content-Length: 0
 Date: Mon, 12 Feb 2024 12:21:58 GMT
@@ -513,6 +520,9 @@ Let's call the endpoint with a valid bearer token returned from the Cognito toke
 
 ```bash
  curl -X 'GET' 'https://localhost:7062/weatherforecast' -i -H 'Authorization: Bearer <your-access-token>'
+ ```
+
+ ```bash
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 Date: Mon, 12 Feb 2024 12:24:16 GMT
@@ -524,7 +534,7 @@ Transfer-Encoding: chunked
 
 We got a `200 OK`. Now that we have `MyService`, the Resource Server, behaving as expected, let's setup the client, i.e, `MyBFF`.
 
-## MyBFF Setup ##
+## `MyBFF` (Client) Setup ##
 
 Let's repeat ASP.NET Core setup for the Backend-for-frontend `MyBFF`.
 
@@ -601,6 +611,9 @@ Let' check it. Assuming that `MyService` is listening at `https://localhost:7062
 
 ```bash
 dotnet run --launch-profile https
+```
+
+```bash
 Building...
 info: Microsoft.Hosting.Lifetime[14]
       Now listening on: https://localhost:7248
@@ -619,6 +632,7 @@ And now **let's call `MyBFF` endpoint** `https://localhost:7248/weatherforecast`
 ```bash
 curl -X 'GET' 'https://localhost:7248/weatherforecast' -i
 ```
+
 ```
 HTTP/1.1 500 Internal Server Error
 Content-Type: text/plain; charset=utf-8
@@ -645,7 +659,7 @@ User-Agent: curl/8.4.0
 in a Development environment. **In Production we should not return any detailed
 information about the exception**.
 
-Basically we are getting a 500 (Internal Server Error) as a **result of a failed call to MyService, which is returning a `401 Unauthorized` to `MyBFF`**. We can also check the logs of `MyBFF`
+Basically we are getting a `500 Internal Server Error` as a **result of a failed call to MyService, which is returning a `401 Unauthorized` to `MyBFF`**. We can also check the logs of `MyBFF`
 
 ```bash
 info: Microsoft.Hosting.Lifetime[0]
@@ -669,7 +683,7 @@ fail: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
          at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
 ```
 
-To fix it, before calling `MyService`, we need to be sure that we have a valid `access_token`:
+To fix it, before calling `MyService`, we need to be sure that we have a valid `access_token` to pass. Basically we need the following logic:
 
 1. check if we have a valid `access_token`:
 
@@ -679,7 +693,7 @@ To fix it, before calling `MyService`, we need to be sure that we have a valid `
 
 1. Pass the `access_token` as a bearer token in the `Authorization` header.
 
-We can use the `IdentityModel` library to help us implement this logic in
+We can use the `IdentityModel` library to help us implementing this logic in
 `MyBFF`, which means that we need to install the nuget package
 [`IdentityModel.AspnetCore`](https://www.nuget.org/packages?q=IdentityModel.AspnetCore)
 
@@ -718,6 +732,9 @@ see what's happening inside the access token management service.
 
 ```bash
 dotnet run --launch-profile https --Logging:LogLevel:Default=Debug
+```
+
+```bash
 Building...
 dbug: Microsoft.Extensions.Hosting.Internal.Host[1]
       Hosting starting
@@ -751,7 +768,7 @@ Transfer-Encoding: chunked
 [{"date":"2024-02-13","temperatureC":13,"summary":"Cool"},{"date":"2024-02-14","temperatureC":-16,"summary":"Cool"},{"date":"2024-02-15","temperatureC":34,"summary":"Hot"},{"date":"2024-02-16","temperatureC":28,"summary":"Cool"},{"date":"2024-02-17","temperatureC":14,"summary":"Hot"}]
 ```
 
-We got a `200 OK` and weather forecast data, which means that the REST call to `MyService` has succeeded. Let's check the logs
+We got a `200 OK` and weather forecast data was returned, which means that the REST call to `MyService` has succeeded. Let's check the logs
 
 ```bash
 dbug: Microsoft.Extensions.Hosting.Internal.Host[2]
@@ -784,12 +801,13 @@ info: System.Net.Http.HttpClient.Refit.Implementation.Generated+IMyServiceClient
 
 From the logs we can see that:
 
-1. The **token management service got a cache miss**
+1. The **token management service got a cache miss** when checking for the
+   access token
 1. The **token management service has requested a new token**
 1. The REST call to `MyService` has succeeded
 1. The **token management service has cached the access token**
 
-Now let's call it again, hoping this time we get a cache hit and reuse the access token in cache.
+Now let's call it again, hoping this time we get a cache hit and reuse the access token. Here are the logs we got this time:
 
 ```bash
 info: System.Net.Http.HttpClient.Refit.Implementation.Generated+IMyServiceClient, MyBFF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.LogicalHandler[101]
@@ -806,7 +824,9 @@ info: System.Net.Http.HttpClient.Refit.Implementation.Generated+IMyServiceClient
       End processing HTTP request after 4.8902ms - 200
 ```
 
-Confirmed, we got a cache hit, and the `access_token` is being reused. When the token expires, we will get again a cache miss, and a new token will be requested.
+**Confirmed! We got a cache hit, and the `access_token` is being reused**. When the token expires, we will get again a cache miss, and a new token will be requested.
+
+In this blog post I am using ASP.NET Core as an example, but the principles used here can be used whatever the programming language we are using.
 
 ## Conclusion ##
 
