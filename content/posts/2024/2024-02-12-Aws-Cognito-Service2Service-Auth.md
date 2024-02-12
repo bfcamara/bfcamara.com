@@ -52,15 +52,16 @@ Cognito](https://aws.amazon.com/cognito/)**.
 
 The **OAuth 2.0 Client Credentials Grant flow explained**:
 
-1. When the Client (MyBFF) needs to call the Resource Server (MyService), if it
-   doesn't have a valid access token yet, makes a request to the Authorization
-   Server (AWS Cognito) passing tthe `client_id` and `client_secret`
+1. When the Client (`MyBFF`) needs to call the Resource Server (`MyService`), if
+   it doesn't have a valid access token yet, makes a request to the
+   Authorization Server (AWS Cognito) passing tthe `client_id` and
+   `client_secret`
 1. Amazon Cognito validates the request and returns the `access_token` with a
    given expiration in `expires_in`
-1. MyBFF calls MyService to get some data passing the `access_token` as a
+1. `MyBFF` calls `MyService` to get some data, passing the `access_token` as a
    `Bearer` token in the `Authorization` header
-1. MyService validates the request and returns the data if the Bearer token is
-   valid.
+1. `MyService` validates the request and returns the data if the `Bearer` token
+   is valid.
 
 ## Amazon Cognito Setup ☁️ ##
 
@@ -80,7 +81,7 @@ to create all these resources instead of AWS console because:
 
 - I love CloudFormation - I don't care if I'm locked in to AWS. The truth is
   that **CloudFormation is so simple and so powerful** that I discard any other
-  IaC alternative (for example Terraform) when managing resources inside AWS
+  IaC alternative when managing resources inside AWS
 - **Amazon Cognito in console is not very intuitive**. In fact I think that's
   one of the disadvantages of Amazon Cognito, when comparing with other
   solutions like Auth0 (considered by many as the best solution in the market in
@@ -141,7 +142,7 @@ We are using a AWS Cognito domain:
 
 ![AWS Cognito UserPool Domain](aws-cognito-domain.png)
 
-**Note**: We could have used a custom domain insteas of a Amazon Cognito domain,
+**Note**: We could have used a custom domain instead of a Amazon Cognito domain,
 which requires  adding some DNS records to your DNS zone.
 
 ### Creating a Resource Server for `MyService` ###
@@ -194,7 +195,7 @@ We can check the result in the **App Integration** tab
 
 Basically we are **registering a client, with a secret**, which is only allowed
 to trigger the `client_credentials` grant flow with the scopes
-`MyService/weather_read`. In another words, we are allowing this client
+`MyService/weather_read`. In other words, we are allowing this client
 `MyBFF` to talk to resource server `MyService`.
 
 We can check the result in AWS console, in the **App Integration** tab
@@ -207,11 +208,13 @@ We can check the result in AWS console, in the **App Integration** tab
 
 ### CloudFormation Template for Client Credentials Grant flow ###
 
-I'm not setting all the **Advanced Security** configuration available that we
-would use in a regular User Pool supporting other flows that deal with real
-users (Authorization Code, Implicit, etc,). I'm also not enabling **AWS Web
-Application Firewall (WAF)**, which is something that we would do in a real
-scenario.
+I'm not setting all the [**Advanced Security**
+features](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-advanced-security.html)
+configuration available that we would use in a regular User Pool supporting
+other flows that deal with real users (Authorization Code, Implicit, etc,). I'm
+also not enabling [**AWS Web Application Firewall
+(WAF)**](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-waf.html),
+which is something that we would do in a real scenario.
 
 This is the template I am using for the example of this blog post.
 
@@ -733,7 +736,8 @@ builder.Services.AddRefitClient<IMyServiceClient>()
 
 Just be sure that you add the following configuration keys to the configuration source that you are using.
 
-- `AUTH_SERVER_TOKEN_ENDPOINT_URL` - For a AWS Cognito domain it should be `https://[your-chosen-domain].auth.us-east-1.amazoncognito.com`
+- `AUTH_SERVER_TOKEN_ENDPOINT_URL` - For a AWS Cognito domain it should be
+  `https://[your-chosen-domain].auth.us-east-1.amazoncognito.com`
 - `AUTH_SERVER_MYBFF_CLIENT_ID` - the client id
 - `AUTH_SERVER_MYBFF_CLIENT_SECRET` - the client secret
 
