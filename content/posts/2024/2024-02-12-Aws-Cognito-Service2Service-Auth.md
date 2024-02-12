@@ -65,7 +65,8 @@ The **OAuth 2.0 Client Credentials Grant flow explained**:
 
 To setup Amazon Cognito for our scenario we need the following resources:
 
-1. A **User Pool** - even though we won't have real users in this pool, a User Pool is the materialization of an **Authorization Server** in OAuth lingo
+1. A **User Pool** - even though we won't have real users in this pool, a User
+   Pool is the materialization of an **Authorization Server** in OAuth lingo
 1. A **Cognito domain** - **expose the authorization server** OAuth endpoints in
    a domain
 1. A **Resource Server** - **it represents MyService**. We will have as many resource
@@ -770,7 +771,7 @@ Transfer-Encoding: chunked
 
 We got a `200 OK` and weather forecast data was returned, which means that the REST call to `MyService` has succeeded. Let's check the logs
 
-```bash
+```bash{5-10,19-20}{numberLines:true}
 dbug: Microsoft.Extensions.Hosting.Internal.Host[2]
       Hosting started
 info: System.Net.Http.HttpClient.Refit.Implementation.Generated+IMyServiceClient, MyBFF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.LogicalHandler[100]
@@ -809,7 +810,7 @@ From the logs we can see that:
 
 Now let's call it again, hoping this time we get a cache hit and reuse the access token. Here are the logs we got this time:
 
-```bash
+```bash{5-6}{numberLines:true}
 info: System.Net.Http.HttpClient.Refit.Implementation.Generated+IMyServiceClient, MyBFF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.LogicalHandler[101]
       End processing HTTP request after 658.9196ms - 200
 info: System.Net.Http.HttpClient.Refit.Implementation.Generated+IMyServiceClient, MyBFF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.LogicalHandler[100]
