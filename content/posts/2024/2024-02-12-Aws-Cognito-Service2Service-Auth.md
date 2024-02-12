@@ -68,11 +68,11 @@ To setup Amazon Cognito for our scenario we need the following resources:
 
 1. A **User Pool** - even though we won't have real users in this pool, a User
    Pool is the materialization of an **Authorization Server** in OAuth lingo
-1. A **Cognito domain** - **expose the authorization server** OAuth endpoints in
+1. A **Cognito domain** - **exposes the authorization server** OAuth endpoints in
    a domain
-1. A **Resource Server** - **it represents MyService**. We will have as many
+1. A **Resource Server** - **it represents `MyService`**. We will have as many
    resource servers as the number of services.
-1. A **Client** - **it represents the Backend-for-Frontend MyBff**. We will have
+1. A **Client** - **it represents the Backend-for-Frontend `MyBFF`**. We will have
    as many clients as the number of services that are calling other services.
 
 I'm going to use [CloudFormation](https://docs.aws.amazon.com/cloudformation/)
@@ -109,7 +109,7 @@ to create all these resources instead of AWS console because:
         - SOFTWARE_TOKEN_MFA
 ```
 
-The important thing here to notice is that I have disable all self-service
+The important thing here to notice is that I have disabled all self-service
 operations from end-users since we won't have any users registered in the pool.
 We can check the result in AWS console.
 
@@ -278,7 +278,7 @@ Resources:
 
 ```
 
-You can submit this template as aCloudFormation stack in AWS console and wait for its deployment completion.
+We can submit this template as a CloudFormation stack in AWS console and wait for its deployment completion.
 
 ![AWS CloudFormation Stack](aws-cloudformation-stack.png)
 
@@ -305,7 +305,7 @@ One thing that we can check is the content of the `access_token` in [jwt.io](htt
 
 Things to notice about the
 [access_token](https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-the-access-token.html)
-issued by AWS Cognito:
+issued by AWS Cognito in a Client Crdentials Grant flow:
 
 - The subject claim `sub` (subject) is the `client_id`
 - There's no audience `aud` claim
@@ -352,7 +352,7 @@ curl -X 'GET' 'https://localhost:7062/weatherforecast'
 [{"date":"2024-02-10","temperatureC":50,"summary":"Balmy","temperatureF":121},{"date":"2024-02-11","temperatureC":48,"summary":"Chilly","temperatureF":118},{"date":"2024-02-12","temperatureC":23,"summary":"Mild","temperatureF":73},{"date":"2024-02-13","temperatureC":50,"summary":"Warm","temperatureF":121},{"date":"2024-02-14","temperatureC":-4,"summary":"Chilly","temperatureF":25}]
 ```
 
-Now **we want to protect `MyService` to allow only authorized clients** with access tokens issued by the AWS Cognito User pool we have created previously.
+Now **we want to protect `MyService` to only allow authorized clients** with access tokens issued by the AWS Cognito User pool we have created previously.
 
 Let' check the initial `Program.cs` (just removing comments from the initial
 template)
@@ -401,7 +401,7 @@ record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 ```
 
 And now let's make the **changes to protect the `/weatherforecast` endpoint**.
-First, and since we want to support JWT tokens. we need to add the nuget package
+First, and since we want to support JWT tokens, we need to add the nuget package
 [`Microsoft.AspNetCore.Authentication.JwtBearer`](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer)
 
 ```bash
@@ -479,8 +479,10 @@ These are the changes:
 - Lines 1-2: Just adding some usings
 - Lines 6: **Registering the Authentication middleware**. It requires registering
   the `.well-known` url configuration for our user pool, which is in the `appsettings.json` file (see below)
-- Lines 7-21; **Registering the Authorization middleware**, with the policy
+- Lines 7-21: **Registering the Authorization middleware**, with the policy
   `WeatherReadPolicy` to check for the scope `MyService/weather_read`
+- Lines 38: Applying the `[Authorize]` attribute with the policy
+  `WeatherReadPolicy` in order to protect the endpoint.
 
 In the `appsettings.json` we need to register the metadata address
 
@@ -539,9 +541,9 @@ Transfer-Encoding: chunked
 
 We got a `200 OK`. Now that we have `MyService`, the Resource Server, behaving as expected, let's setup the client, i.e, `MyBFF`.
 
-## `MyBFF` (Client) Setup ##
+## `MyBFF` Setup (Client) ##
 
-Let's repeat ASP.NET Core setup for the Backend-for-frontend `MyBFF`.
+Let's repeat the ASP.NET Core setup for the Backend-for-frontend `MyBFF`.
 
 ```bash
 dotnet new webapi -o MyBFF
@@ -614,7 +616,8 @@ should see an error since we are doing an unauthorized call to `MyService`
 because we don't have any logic yet to pass a JWT bearer token when doing the
 call.
 
-Let' check it. Assuming that `MyService` is listening at `https://localhost:7062`, let's also run `MyBFF`. In `MyBFF` folder
+Assuming that `MyService` is running and listening at `https://localhost:7062`,
+let's also run `MyBFF`. In `MyBFF` folder
 
 ```bash
 dotnet run --launch-profile https
@@ -662,13 +665,13 @@ Host: localhost:7248
 User-Agent: curl/8.4.0
 ```
 
-**Note**: detailed exception information is being returned because I'm running
+**Note ⚠️**: detailed exception information is being returned because I'm running
 in a Development environment. **In Production we should not return any detailed
 information about the exception**.
 
 Basically we are getting a `500 Internal Server Error` as a **result of a failed call to MyService, which is returning a `401 Unauthorized` to `MyBFF`**. We can also check the logs of `MyBFF`
 
-```bash
+```bash{7-11}{numberLines: true}
 info: Microsoft.Hosting.Lifetime[0]
       Content root path: C:\temp\MyBFF
 info: System.Net.Http.HttpClient.Refit.Implementation.Generated+IMyServiceClient, MyBFF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.LogicalHandler[100]
@@ -691,8 +694,8 @@ fail: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
 ```
 
 To fix it, before calling `MyService`, we need to be sure that we have a valid
-`access_token` to pass as bearer token in the authorization header. Basically we
-need the following logic in the REST client:
+`access_token` to pass it as bearer token in the authorization header. Basically
+we need the following logic in the REST client:
 
 1. check if we have a valid `access_token`:
 
@@ -731,10 +734,10 @@ builder.Services.AddRefitClient<IMyServiceClient>()
 Just be sure that you add the following configuration keys to the configuration source that you are using.
 
 - `AUTH_SERVER_TOKEN_ENDPOINT_URL` - For a AWS Cognito domain it should be `https://[your-chosen-domain].auth.us-east-1.amazoncognito.com`
-- `AUTH_SERVER_MYBFF_CLIENT_ID`
-- `AUTH_SERVER_MYBFF_CLIENT_SECRET`
+- `AUTH_SERVER_MYBFF_CLIENT_ID` - the client id
+- `AUTH_SERVER_MYBFF_CLIENT_SECRET` - the client secret
 
-**Note**: **Do not store secrets in source control**
+**Note ⚠️**: **Do not store secrets in source control**
 
 Now let's run again `MyBFF`, but this time **increasing the log level to debug**
 to see what's happening inside the access token management service.
@@ -779,7 +782,7 @@ Transfer-Encoding: chunked
 
 We got a `200 OK` and weather forecast data was returned, which means that the REST call to `MyService` has succeeded. Let's check the logs
 
-```bash{5-10,19-20}{numberLines:true}
+```bash{5-10,19-20}{numberLines: true}
 dbug: Microsoft.Extensions.Hosting.Internal.Host[2]
       Hosting started
 info: System.Net.Http.HttpClient.Refit.Implementation.Generated+IMyServiceClient, MyBFF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.LogicalHandler[100]
@@ -819,7 +822,7 @@ From the logs we can see that:
 Now let's call it a 2nd time, hoping this time we get a cache hit and reuse the
 access token. Here are the logs we got this time:
 
-```bash{5-6}{numberLines:true}
+```bash{5-6}{numberLines: true}
 info: System.Net.Http.HttpClient.Refit.Implementation.Generated+IMyServiceClient, MyBFF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.LogicalHandler[101]
       End processing HTTP request after 658.9196ms - 200
 info: System.Net.Http.HttpClient.Refit.Implementation.Generated+IMyServiceClient, MyBFF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.LogicalHandler[100]
@@ -836,7 +839,7 @@ info: System.Net.Http.HttpClient.Refit.Implementation.Generated+IMyServiceClient
 
 **Confirmed! We got a cache hit, and the `access_token` is being reused**. When the token expires, we will get again a cache miss, and a new token will be requested.
 
-In this blog post I am using ASP.NET Core as an example, but the principles used here can be used whatever the programming language we are using. I am also not assuming anything about the host where the services are running - it can be On-Premise, in an EC2 instance, in a AWS Lambda + API Gateway, etc. - it works in whatever host.
+In this blog post I am using ASP.NET Core as an example, but the principles used here can be used whatever the programming language you are using. I am also not assuming anything about the host where the services are running - it can be On-Premise, in an EC2 instance, in a AWS Lambda + API Gateway, etc. - it works in whatever host.
 
 ## Conclusion ##
 
