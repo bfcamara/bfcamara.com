@@ -121,7 +121,7 @@ export default {
     {
       resolve: "gatsby-plugin-google-gtag",
       options: {
-        trackingIds: [config.googleAnalyticsId],
+        trackingIds: [config.googleAnalyticsId ?? process.env.GOOGLE_ANALYTICS_ID],
         pluginConfig: {
           head: true,
         },
