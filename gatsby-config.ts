@@ -1,4 +1,9 @@
 import path from "path";
+import dotenv from 'dotenv';
+
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 import config from "./content/config.json";
 import * as types from "./internal/gatsby/types";
