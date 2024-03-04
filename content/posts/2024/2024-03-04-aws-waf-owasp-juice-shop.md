@@ -356,7 +356,7 @@ Shop challenge and check if AWS WAF helps to protect against them in some way.
 **A Web Application Firewall (WAF) is definitely a tool that we should consider
 using in front of our public face apps and services**. Not having a WAF, is like
 riding a mountain bike without a helmet. We should always remember that **a WAF
-is our fist line of defense, but it doesn't prevent all attacks**. As
+is our first line of defense, but it doesn't prevent all attacks**. As
 developers, we should write our apps with the OWASP Top 10 list in mind to be
 sure that our app is secure, even without a WAF. 
 
