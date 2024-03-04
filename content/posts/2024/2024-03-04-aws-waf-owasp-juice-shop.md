@@ -3,7 +3,7 @@ title: Exploring AWS WAF rules with OWASP Juice Shop
 date: "2024-03-04"
 template: "post"
 draft: false
-slug: "/posts/aws-waf-owasp-juice-sjop"
+slug: "/posts/aws-waf-owasp-juice-shop"
 category: "AWS"
 socialImage: aws-waf-owasp-social.png
 tags:
@@ -58,7 +58,7 @@ public workloads.
 
 When we start using a WAF in front of our apps, it's normal that we break some
 functionality because we start blocking some requests that WAF considers
-potencial malicious, even if they are legit. We should test our apps and select
+potential malicious, even if they are legit. We should test our apps and select
 and tweak the WAF rules that must be applied to our web app or API.
 
 **We should never forget that a WAF is just the first line of defense - our app
@@ -72,7 +72,7 @@ As developers we should be aware of the [OWASP Top
 10](https://owasp.org/www-project-top-ten/), which represents **the list of the
 most critical security risks to web applications**. I would say that it consists
 of the top 10 concerns that we, developers, should have on our head when
-developing and writing our apps. (Broken access control, Injection, Cyptographic
+developing and writing our apps. (Broken access control, Injection, Cryptographic
 failures, etc.).
 
 When developing features, developers are so focused on the feature itself that
@@ -209,7 +209,7 @@ In the AWS Console we should see the image published
 
 ![AWS Console ECR](aws-console-ecr.png)
 
-Now we can use this image in our AppRunner Service. Navigate to the AppRunner service and create a new service, specifiying the docker image URI for the service
+Now we can use this image in our AppRunner Service. Navigate to the AppRunner service and create a new service, specifying the docker image URI for the service
 
 ![AWS AppRunner create service](aws-apprunner-create-service.png)
 
@@ -239,15 +239,15 @@ Cognito, etc. Let's create a web acl with the name `juice-shop-web-acl`
 
 ![AWS WAF Web ACL](aws-waf-web-acl-create.png)
 
-In this context I want to start with the common rules to protect against that the OWAS Top 10 list. AWS WAF supports out of the box a set of rules that we can enable.
+In this context I want to start with the common rules to protect against that the OWASP Top 10 list. AWS WAF supports out of the box a set of rules that we can enable.
 
 ![AWS WAF Web ACL Managed Rules](aws-waf-web-acl-managed-rules.png)
 
-Under AWS Managed Rules, enable the rules that you want to explore. For now I am going to try the Core Rule set to protect against many of the OWAS Top 10 list, and also the SQL database rule set to protect against the popular SQL injection attack.
+Under AWS Managed Rules, enable the rules that you want to explore. For now I am going to try the Core Rule set to protect against many of the OWASP Top 10 list, and also the SQL database rule set to protect against the popular SQL injection attack.
 
 ![AWS WAF Web ACL Rules](aws-waf-web-acl-managed-rules-selection.png)
 
-The rules are orgnized into groups and are maintained by AWS and AWS Marketplace sellers (Fortinet, Cloudbric, F5, etc.). For now, we can go with the defaults on the rest of the wizard.
+The rules are organized into groups and are maintained by AWS and AWS Marketplace sellers (Fortinet, Cloudbric, F5, etc.). For now, we can go with the defaults on the rest of the wizard.
 
 ![AWS WAF Web ACl list](aws-waf-web-acl-list.png)
 
@@ -282,7 +282,7 @@ And here is the result
 
 ![Juice Shop Login SQL Injection success](juice-shop-login-sql-injection-success.png)
 
-Basically I am authenticated as the administator. The SQL injection attack was a success.
+Basically I am authenticated as the administrator. The SQL injection attack was a success.
 
 Now let's try to do the same in the version running in AWS with WAF protection.
 
@@ -295,7 +295,7 @@ the request**. Let's confirm it in the Developer Tools.
 
 As soon as we open the developer tools, we can see some console errors, and we
 notice that **a `POST` request to the login endpoint is being blocked with a 403
-Forbidden**. Let's inpect what we got in the wire.
+Forbidden**. Let's inspect what we got in the wire.
 
 ![Juice Shop Login Network](juice-shop-login-network.png)
 
@@ -332,11 +332,11 @@ we are injecting a script**. Let's see in the Administration screen, where the
 list of users is shown, how this user is being displayed. Navigate as
 administrator (by using sql injection) to http://localhost:3000/#/administration
 
-![Juice Shop Administation XSS](juice-shop-administation-xss.png)
+![Juice Shop Administration XSS](juice-shop-administation-xss.png)
 
 We are getting the alert box, which is exactly the script we have injected. **The
 XSS attack was succeeded, and we could run a malicious script on the
-administation page**.
+administration page**.
 
 Now let's repeat the same API request in the version that is running behind WAF in AWS.
 
@@ -351,16 +351,16 @@ We are being blocked with a 403 Forbidden as expected. Let's check the WAF sampl
 We can continue our exploration of other attack vectors by visiting each Juice
 Shop challenge and check if AWS WAF helps to protect against them in some way.
 
-## Conlusion ##
+## Conclusion ##
 
-**A Web Application Firewall (WAF) is definitelly a tool that we should consider
+**A Web Application Firewall (WAF) is definitely a tool that we should consider
 using in front of our public face apps and services**. Not having a WAF, is like
 riding a mountain bike without a helmet. We should always remember that **a WAF
 is our fist line of defense, but it doesn't prevent all attacks**. As
 developers, we should write our apps with the OWASP Top 10 list in mind to be
 sure that our app is secure, even without a WAF. 
 
-AWS WAF is the natural adoption for workloads running in AWS and it supports out of the box many rules to protect againt common attacks. The Web ACLs need to be tweaked for the app that is going to be protected.
+AWS WAF is the natural adoption for workloads running in AWS and it supports out of the box many rules to protect against common attacks. The Web ACLs need to be tweaked for the app that is going to be protected.
 
 **As a final message, consider seriously using a WAF in front of your public apps. It's something that you won't regret, even if it costs you some money. But I'm sure that it will cost you even more if you are a victim of a cyber attack.**
 
