@@ -42,7 +42,7 @@ Basically a WAF protects web apps/APIs by inspecting HTTP requests. It acts at
 the layer 7 (Application Layer of the [OSI
 Model](https://www.fortinet.com/resources/cyberglossary/osi-model)) and it
 behaves like a reverse proxy with policies and rules attached to it to protect
-malicious requests preventing them to go flow to our servers or services. Using
+malicious requests, preventing them to flow to our servers or services. Using
 a **WAF doesn't replace other initiatives that we should be doing in our apps
 such as code reviews, penetration tests, threat modelling analysis, etc**. And
 most of all, **using a WAF doesn't mean that we don't need to adopt security
@@ -353,14 +353,14 @@ Shop challenge and check if AWS WAF helps to protect against them in some way.
 
 ## Conlusion ##
 
-**A Web Application Firewall (WAF) is definitelly a tool that we should use in
-front of our public face apps and services**. Not having a WAF, is like riding a
-mountain bike without a helmet. We should always remember that **a WAF is our
-fist line of defense, but it doesn't prevent all attacks**. As developers, we
-should write our apps with the OWASP Top 10 list in mind to be sure that our app
-is secure, even without a WAF. 
+**A Web Application Firewall (WAF) is definitelly a tool that we should consider
+using in front of our public face apps and services**. Not having a WAF, is like
+riding a mountain bike without a helmet. We should always remember that **a WAF
+is our fist line of defense, but it doesn't prevent all attacks**. As
+developers, we should write our apps with the OWASP Top 10 list in mind to be
+sure that our app is secure, even without a WAF. 
 
 AWS WAF is the natural adoption for workloads running in AWS and it supports out of the box many rules to protect againt common attacks. The Web ACLs need to be tweaked for the app that is going to be protected.
 
-**As a final message, don't expose your public apps without a WAF. It's something that you won't regret, even if it costs you some money. But I'm sure that it will cost you even more if you are a victim of a cyber attack.**
+**As a final message, consider seriously using a WAF in front of your public apps. It's something that you won't regret, even if it costs you some money. But I'm sure that it will cost you even more if you are a victim of a cyber attack.**
 
